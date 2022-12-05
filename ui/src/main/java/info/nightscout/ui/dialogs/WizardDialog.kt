@@ -344,8 +344,15 @@ class WizardDialog : DaggerDialogFragment() {
     }
 
     private fun loadCheckedStates() {
-        binding.bgTrendCheckbox.isChecked = sp.getBoolean(R.string.key_wizard_include_trend_bg, false)
-        binding.cobCheckbox.isChecked = sp.getBoolean(R.string.key_wizard_include_cob, false)
+        // binding.bgTrendCheckbox.isChecked = sp.getBoolean(R.string.key_wizard_include_trend_bg, false)
+        // binding.cobCheckbox.isChecked = sp.getBoolean(R.string.key_wizard_include_cob, false)
+
+        binding.bgTrendCheckbox.isChecked = false
+        binding.cobCheckbox.isChecked = false
+        binding.iobCheckbox.isChecked = false
+        binding.bgCheckbox.isChecked = false
+
+
         usePercentage = sp.getBoolean(R.string.key_wizard_correction_percent, false)
         binding.correctionPercent.isChecked = usePercentage
     }
