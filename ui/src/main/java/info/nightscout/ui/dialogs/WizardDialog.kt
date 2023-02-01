@@ -59,6 +59,8 @@ import java.text.DecimalFormat
 import javax.inject.Inject
 import kotlin.math.abs
 
+private const val maxBolusPercentage = 100.0
+
 class WizardDialog : DaggerDialogFragment() {
 
     @Inject lateinit var injector: HasAndroidInjector
@@ -186,7 +188,7 @@ class WizardDialog : DaggerDialogFragment() {
 
         if (usePercentage) {
             calculatedPercentage = percentage
-            binding.correctionInput.setParams(calculatedPercentage, 10.0, 200.0, 5.0, DecimalFormat("0"), false, binding.okcancel.ok, textWatcher)
+            binding.correctionInput.setParams(calculatedPercentage, 10.0, maxBolusPercentage, 5.0, DecimalFormat("0"), false, binding.okcancel.ok, textWatcher)
             binding.correctionInput.value = calculatedPercentage
             binding.correctionUnit.text = "%"
         } else {
@@ -257,7 +259,7 @@ class WizardDialog : DaggerDialogFragment() {
                 binding.correctionUnit.text = if (isChecked) "%" else rh.gs(info.nightscout.core.ui.R.string.insulin_unit_shortname)
                 usePercentage = binding.correctionPercent.isChecked
                 if (usePercentage) {
-                    binding.correctionInput.setParams(calculatedPercentage, 10.0, 200.0, 5.0, DecimalFormat("0"), false, binding.okcancel.ok, textWatcher)
+                    binding.correctionInput.setParams(calculatedPercentage, 10.0, maxBolusPercentage, 5.0, DecimalFormat("0"), false, binding.okcancel.ok, textWatcher)
                     binding.correctionInput.customContentDescription = rh.gs(R.string.a11_correction_percentage)
                 } else {
                     binding.correctionInput.setParams(
